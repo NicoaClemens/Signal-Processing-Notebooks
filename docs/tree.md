@@ -55,6 +55,18 @@
 - `create_lattice_ui()`
   - `_render()`
 
+### `lcao`
+
+- `_format_energy()`
+- `_create_tight_binding_ui()`
+  - `_shape()`
+  - `_selected_modes()`
+  - `_update_index_options()`
+  - `_render()`
+  - `_on_dimensions_change()`
+- `create_chain_ui()`
+- `create_square_lattice_ui()`
+
 ### `play_audio_custom_wave`
 
 - `create_custom_wave_ui()`
@@ -95,27 +107,6 @@
   - `_push_mixer_volumes()`
   - `_update_plots()`
   - `_on_midi_freq()`
-
-## `tests`
-
-### `op_search/test_op_search`
-
-- **class** `TestOpSearchSemantics`
-  - `test_objective_minimize_flag_is_applied()`
-  - `test_parameter_kind_space_validation()`
-  - `test_invalid_parameter_kind_rejected()`
-  - `test_summary_uses_none_space_size_for_continuous()`
-- **class** `TestBruteForceSafety`
-  - `_build_discrete_problem()`
-  - `test_forced_bruteforce_raises_when_too_large_without_cap()`
-  - `test_bruteforce_honors_max_evaluations_cap()`
-- **class** `TestLocalSearchBounds`
-  - `test_powell_receives_bounds()`
-  - `test_nelder_mead_does_not_use_bounds()`
-- **class** `TestLogContinuousBehavior`
-  - `test_diff_ev_uses_log_bounds_for_log_continuous()`
-- **class** `TestSolverConfigValidation`
-  - `test_max_evaluations_must_be_positive()`
 
 ## `tools`
 
@@ -521,6 +512,15 @@
 - `parse_poly()`
 - `poly_to_latex()`
 - `expr_to_latex()`
+
+### `tight_binding`
+
+- `_validated_shape()`
+- `_validated_parameters()`
+- `build_hamiltonian()`
+- `analytic_energy()`
+- `analytic_eigenstate()`
+- `analytic_eigenstates()`
 
 ### `ui`
 

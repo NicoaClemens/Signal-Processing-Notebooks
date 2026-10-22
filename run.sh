@@ -11,14 +11,10 @@ if [[ ! -x "$PY" ]]; then
   exit 1
 fi
 
-echo "[1/3] Installing dependencies from requirements.txt..."
-"$PY" -m pip install -r "$ROOT/requirements.txt"
-
-echo "[2/3] Installing project in editable mode..."
+echo "[1/2] Installing project and dependencies..."
 "$PY" -m pip install -e "$ROOT"
-"$PY" -m pip install ipykernel
 
-echo "[3/3] Registering notebook kernel '$KERNEL_NAME'..."
+echo "[2/2] Registering notebook kernel '$KERNEL_NAME'..."
 "$PY" -m ipykernel install --user --name "$KERNEL_NAME" --display-name "$KERNEL_DISPLAY"
 
 echo "Starting Jupyter Lab in notebooks directory..."

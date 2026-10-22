@@ -8,6 +8,26 @@ version = "0.1.0"
 description = "Interactive signal-processing notebooks and widgets"
 readme = "README.md"
 requires-python = ">=3.12"
+dependencies = [
+    "jupyterlab",
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "pandas",
+    "ipywidgets",
+    "ipympl",
+    "anywidget",
+    "black[jupyter]",
+    "torch",
+    "pretty-midi",
+    "tqdm",
+    "pyfluidsynth",
+    # https://github.com/FluidSynth/fluidsynth/releases/tag/v2.5.4
+    "sounddevice",
+    "cma",
+    "scikit-learn",
+    "ipykernel",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

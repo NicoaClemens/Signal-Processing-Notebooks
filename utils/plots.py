@@ -14,7 +14,7 @@ class PlotManager:
     def add_plot(
         self,
         y,
-        fs,
+        fs=None,
         x_min: float = 0,
         x_max: float = 1,
         title: str = "",
@@ -71,7 +71,7 @@ class PlotManager:
 
         return (width_per_col * cols, height_per_row * rows)
 
-    def render(self, tight_layout: bool = True, show: bool = True) -> plt.Figure:
+    def render(self, tight_layout: bool = True, show: bool = True) -> plt.Figure | None:
         if not self._plots:
             print("No plots to render. Use add_plot() to add plots first.")
             return None

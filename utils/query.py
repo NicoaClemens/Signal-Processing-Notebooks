@@ -64,7 +64,7 @@ class Query:
         self._data = None
 
     def get(self, *args):
-        if self._type == None:
+        if self._type is None:
             raise RuntimeError("No Query initialized yet")
         getter_name = self._GETTER_REGISTRY.get(self._type)
         if getter_name is None:
@@ -72,7 +72,8 @@ class Query:
         getter = getattr(self, getter_name)
         return getter(*args)
 
-    def table(self, rows=3, cols=3, title="", dtype=str, default=""):  #
+    def table(self, rows=3, cols=3, title="", dtype=str, default=""):
+        self._type = "table"
 
         row_labels = (
             [str(r) for r in rows]
@@ -113,10 +114,10 @@ class Query:
         header_row = widgets.HBox(header_cells)
         grid_rows = [header_row]
         for ri, (row_label, row_cells) in enumerate(zip(row_labels, cell_widgets)):
-            bg = QUERY._ALT_ROW if ri % 2 else "white"
+            bg = QUERY.alt_row if ri % 2 else QUERY.row_color
             row_header = widgets.HTML(_ROW_HEADER(bg, row_label))
             for cell in row_cells:
-                cell.layout.border = QUERY._BORDER
+                cell.layout.border = QUERY.border
             grid_rows.append(widgets.HBox([row_header] + row_cells))
 
         title_html = widgets.HTML(_TITLE_HTML(title))
@@ -138,13 +139,27 @@ class Query:
         ]
         self._data = {"widgets": checkbox_widgets, "options": list(options)}
         label_html = widgets.HTML(f"<b style='color:#2C3E50;'>{label}</b>")
-        cols = [[] for _ in range(cols)]
+        columns = [[] for _ in range(cols)]
         for i, cb in enumerate(checkbox_widgets):
-            cols[i % cols].append(cb)
-        grid = widgets.HBox([widgets.VBox(col) for col in cols if col])
+            columns[i % cols].append(cb)
+        grid = widgets.HBox([widgets.VBox(col) for col in columns if col])
         children = [label_html, grid]
         if description:
-            children.append(description)
+            children.append(widgets.HTML(description))
+        display(widgets.VBox(children))
+
+    def text(self, label="", default="", description=""):
+        self._type = "text"
+        field = widgets.Text(
+            value=str(default),
+            description=label,
+            style=_WIDGET_STYLE,
+            layout=widgets.Layout(width="400px"),
+        )
+        self._data = {"widget": field}
+        children = [field]
+        if description:
+            children.append(widgets.HTML(description))
         display(widgets.VBox(children))
 
     def _get_table(self, *args):
@@ -174,14 +189,17 @@ class Query:
 
         raise ValueError(f"Invalid Argument(s): {args}")
 
+    def _get_text(self, *args):
+        return self._data["widget"].value
+
     def _get_checkboxes(self, *args):
         return [
             opt
-            for opt, cb in zip(self._data["widgets"], self._data["options"])
+            for cb, opt in zip(self._data["widgets"], self._data["options"])
             if cb.value
         ]
 
     def __repr__(self) -> str:
-        if self._query_type is None:
+        if self._type is None:
             return "Query(no active widget)"
-        return f"Query(type={self._query_type!r})"
+        return f"Query(type={self._type!r})"

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from widget import DrawGridWidget, EpicyclesWidget
 from utils.fourier import extract_contour, compute_dft, reconstruct_path
 from utils.ui import section, dark_ax
-from utils.STYLES import COLORS, PLOT, SLIDER_LAYOUT
+from utils.STYLES import COLORS, FFT_PLOT_COLORS, PLOT, SLIDER_LAYOUT
 
 
 def create_epicycles_ui(grid_size=64):
@@ -70,7 +70,7 @@ def create_epicycles_ui(grid_size=64):
         _update_plot()
 
     def _update_plot():
-        c = COLORS.FFT_PLOT
+        c = FFT_PLOT_COLORS
         freqs = _state["freqs"]
         coeffs = _state["coeffs"]
         contour = _state["contour"]

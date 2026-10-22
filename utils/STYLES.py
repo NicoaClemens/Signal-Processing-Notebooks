@@ -1,10 +1,12 @@
-# used by: cells\epicycles.py, cells\filter_chain\constants.py, cells\filter_chain\helpers.py, cells\filter_chain\plotting.py, cells\lcao.py, cells\play_audio_multiplication.py, utils\query.py, utils\ui.py
+# used by: cells\epicycles.py, cells\filter_chain\constants.py, cells\filter_chain\helpers.py, cells\filter_chain\plotting.py, cells\lcao.py, cells\play_audio_multiplication.py, cells\schroedinger.py, utils\query.py, utils\ui.py
+
+from typing import Any
 
 import ipywidgets as widgets
 
 
 class _AttrDict(dict):
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         value = self[name]
         if isinstance(value, dict):
             return _AttrDict(value)

@@ -93,6 +93,16 @@
   - `fft_x2()`
   - `fft_mult()`
 
+### `schroedinger`
+
+- `_build_plot()`
+  - `render()`
+- `create_schroedinger_ui()`
+  - `message()`
+  - `redraw()`
+  - `solve()`
+  - `apply_preset()`
+
 ### `synthesizer`
 
 - `create_synth_ui()`
@@ -407,6 +417,14 @@
 - `save_checkpoint()`
 - `train()`
 
+### `calculator`
+
+- `triangular_delta()`
+- **class** `Expression`
+  - `__init__()`
+  - `__call__()`
+- `compile_expression()`
+
 ### `clustering_viz`
 
 - `visualize_clustering_suite()`
@@ -454,9 +472,19 @@
   - `get()`
   - `table()`
   - `checkboxes()`
+  - `text()`
   - `_get_table()`
+  - `_get_text()`
   - `_get_checkboxes()`
   - `__repr__()`
+
+### `schroedinger`
+
+- `parse_potential()`
+  - `potential()`
+- `solve_schroedinger()`
+- `oscillation_period()`
+- `time_dependent()`
 
 ### `signals`
 

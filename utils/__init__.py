@@ -2,11 +2,13 @@
 
 from .audio import AudioManager
 from .audio_files import load_wav_from_upload, resample_for_periodic_source, signal_to_wav_data_uri, build_audio_player_html
+from .calculator import triangular_delta, Expression, compile_expression
 from .clustering_viz import visualize_clustering_suite, run_solver_on_dataset
 from .filters import apply_fourier_filter, poly_ratio_H, rect_H, apply_convolution, apply_transform, eval_kernel, eval_H_expr
 from .fourier import extract_contour, compute_dft, reconstruct_path
 from .plots import PlotManager
 from .query import Query
+from .schroedinger import parse_potential, solve_schroedinger, oscillation_period, time_dependent
 from .signals import WAVE_FUNCS, parse_coeffs, custom_wave, samples_to_fourier_coeffs
 from .STYLES import COLORS, FFT_PLOT_COLORS, SIGNAL_COLORS, SLIDER_LAYOUT, DD_LAYOUT, CB_LAYOUT, PLOT, SECTION_STYLE, FREQ_LABEL_STYLE, BLOCK_BORDER, BLOCK_LAYOUT, ARROW_HTML, FORMULA_STYLE, BLOCK_HEADER_STYLE_LG, BLOCK_HEADER_STYLE_SM, QUERY
 from .texrender import parse_poly, poly_to_latex, expr_to_latex
@@ -23,6 +25,7 @@ __all__ = [
     "CB_LAYOUT",
     "COLORS",
     "DD_LAYOUT",
+    "Expression",
     "FFT_PLOT_COLORS",
     "FORMULA_STYLE",
     "FREQ_LABEL_STYLE",
@@ -43,6 +46,7 @@ __all__ = [
     "apply_transform",
     "build_audio_player_html",
     "build_hamiltonian",
+    "compile_expression",
     "compute_dft",
     "custom_wave",
     "dark_ax",
@@ -51,8 +55,10 @@ __all__ = [
     "expr_to_latex",
     "extract_contour",
     "load_wav_from_upload",
+    "oscillation_period",
     "parse_coeffs",
     "parse_poly",
+    "parse_potential",
     "plot_waveform_and_fft",
     "poly_ratio_H",
     "poly_to_latex",
@@ -63,5 +69,8 @@ __all__ = [
     "samples_to_fourier_coeffs",
     "section",
     "signal_to_wav_data_uri",
+    "solve_schroedinger",
+    "time_dependent",
+    "triangular_delta",
     "visualize_clustering_suite",
 ]

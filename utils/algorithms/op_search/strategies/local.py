@@ -1,4 +1,4 @@
-# used by: tests\op_search\test_op_search.py, utils\algorithms\op_search\solver.py
+# used by: utils\algorithms\op_search\solver.py
 import math
 import numpy as np
 from scipy.optimize import minimize

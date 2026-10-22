@@ -2,6 +2,7 @@
 
 from .epicycles import create_epicycles_ui
 from .lattice_visualizer import plot_lattice, create_lattice_ui
+from .lcao import create_chain_ui, create_square_lattice_ui
 from .play_audio_custom_wave import create_custom_wave_ui
 from .play_audio_multiplication import create_audio_ui
 from .plot_multiplication import plot_signals
@@ -10,9 +11,11 @@ from .synthesizer import N_PERIOD, create_synth_ui
 __all__ = [
     "N_PERIOD",
     "create_audio_ui",
+    "create_chain_ui",
     "create_custom_wave_ui",
     "create_epicycles_ui",
     "create_lattice_ui",
+    "create_square_lattice_ui",
     "create_synth_ui",
     "plot_lattice",
     "plot_signals",

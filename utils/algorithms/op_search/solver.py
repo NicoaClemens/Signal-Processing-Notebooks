@@ -1,4 +1,4 @@
-# used by: tests\op_search\test_op_search.py
+# used by:
 from __future__ import annotations
 import math
 import warnings
